@@ -1,3 +1,22 @@
+/*var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+recognition.grammars = speechRecognitionList; recognition.continuous = false; recognition.lang = 'pt-BR';
+var saida = document.querySelector('.output');
+document.body.addEventListener('click',() =>{ recognition.start();} );
+recognition.addEventListener('speechend', () => { recognition.stop();} );
+recognition.addEventListener('error', (event) => { saida.textContent = 'Erro no reconhecimento do texto: ' + event.error;});
+recognition.onresult = function(event) {
+var last = event.results.length - 1;
+var texto = event.results[last][0].transcript; saida.textContent = 'Resultado recebido: ' + texto + '.'; disparaEvento(texto);
+}
+//1- IMPLEMENTAR..... FUNCAO QUE IRA DISPARAR A ACAO CORRESPONDENTE A PALAVRA
+function disparaEvento(palavra){}
+//2- IMPLEMENTAR FUNCAO DA PROMESSA
+//4 - INCLUIR OS EVENTOS DE CLICK NOS ELEMENTOS <TD> E <TR> DA PAGINA //5 - METODO PARA ALTERAR O BACKGROUND DAS CELULAS
+//
+//
+*/
 window.onload = function(){
 	cores = ['#999', '#03f', '#ff6', '#F00', '#60c', '#ff0'];
 
@@ -8,10 +27,10 @@ window.onload = function(){
 	document.getElementsByClassName("ca")[0],
 	document.getElementsByClassName("bo")[0] 
 	];
-	trocaCoresAntiHorario(1);
-	//trocaCoresHorario(1);
+	//trocaCoresAntiHorario(1);
+	trocaCoresHorario(1);
 
-	function trocaCoresAntiHorario(vez){
+	function trocaCoresHorario(vez){
 		i = 0;
 		for(elemento of elementos){
 			elemento.style.backgroundColor = cores[vez+i];
@@ -33,7 +52,7 @@ window.onload = function(){
 		setTimeout(() => {trocaCoresHorario(vez)}, 1000);
 	}
 
-	function trocaCoresHorario(vez){
+	function trocaCoresAntiHorario(vez){
 		i = 0;
 		for(elemento of elementos){
 			elemento.style.backgroundColor = cores[5- (vez+i)];
@@ -47,7 +66,7 @@ window.onload = function(){
 				i = 5 - vez;
 			}
 		}
-		if (vez < 5) {
+		if (vez != 5) {
 			vez++;
 		}else{
 			vez = 0;
