@@ -27,10 +27,10 @@ window.onload = function(){
 	document.getElementsByClassName("ca")[0],
 	document.getElementsByClassName("bo")[0] 
 	];
-	//trocaCoresAntiHorario(1);
-	trocaCoresHorario(1);
+	trocaCoresAntiHorario(1);
+	//trocaCoresHorario(1);
 
-	function trocaCoresHorario(vez){
+	function trocaCoresAntiHorario(vez){
 		i = 0;
 		for(elemento of elementos){
 			elemento.style.backgroundColor = cores[vez+i];
@@ -52,7 +52,7 @@ window.onload = function(){
 		setTimeout(() => {trocaCoresHorario(vez)}, 1000);
 	}
 
-	function trocaCoresAntiHorario(vez){
+	function trocaCoresHorario(vez){
 		i = 0;
 		for(elemento of elementos){
 			elemento.style.backgroundColor = cores[5- (vez+i)];
